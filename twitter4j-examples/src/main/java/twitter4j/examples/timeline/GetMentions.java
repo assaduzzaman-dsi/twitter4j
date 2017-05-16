@@ -25,6 +25,11 @@ import java.util.List;
  * @since Twitter4J 2.1.7
  */
 public class GetMentions {
+	
+	static String consumerKeyStr = "xx";
+	static String consumerSecretStr = "xx";
+	static String accessTokenStr = "xx-xx";
+	static String accessTokenSecretStr = "xx";
     /**
      * Usage: java twitter4j.examples.timeline.GetMentions
      *
@@ -33,6 +38,9 @@ public class GetMentions {
     public static void main(String[] args) {
         // gets Twitter instance with default credentials
         Twitter twitter = new TwitterFactory().getInstance();
+		twitter.setOAuthConsumer(consumerKeyStr, consumerSecretStr);
+		AccessToken accessToken = new AccessToken(accessTokenStr,
+				accessTokenSecretStr);
         try {
             User user = twitter.verifyCredentials();
             List<Status> statuses = twitter.getMentionsTimeline();
