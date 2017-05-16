@@ -16,9 +16,14 @@
 
 package twitter4j.examples.timeline;
 
-import twitter4j.*;
-
 import java.util.List;
+
+import twitter4j.Status;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
+import twitter4j.User;
+import twitter4j.auth.AccessToken;
 
 /**
  * @author Yusuke Yamamoto - yusuke at mac.com
@@ -30,6 +35,7 @@ public class GetMentions {
 	static String consumerSecretStr = "xx";
 	static String accessTokenStr = "xx-xx";
 	static String accessTokenSecretStr = "xx";
+
     /**
      * Usage: java twitter4j.examples.timeline.GetMentions
      *
@@ -41,6 +47,7 @@ public class GetMentions {
 		twitter.setOAuthConsumer(consumerKeyStr, consumerSecretStr);
 		AccessToken accessToken = new AccessToken(accessTokenStr,
 				accessTokenSecretStr);
+		twitter.setOAuthAccessToken(accessToken);
         try {
             User user = twitter.verifyCredentials();
             List<Status> statuses = twitter.getMentionsTimeline();
